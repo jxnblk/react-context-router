@@ -2,15 +2,10 @@
 const webpack = require('webpack')
 
 const config = {
-  entry: {
-    bundle: './demo/entry.js',
-    base: './demo/base.js',
-    mini: './demo/mini.js',
-    'react-router': './demo/react-router.js'
-  },
+  entry: './demo/entry.js',
   output: {
-    path: __dirname + '/bundles',
-    filename: '[name].js'
+    path: __dirname + '/demo',
+    filename: 'bundle.js'
   },
   module: {
     loaders: [

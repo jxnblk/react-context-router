@@ -1,7 +1,7 @@
 
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import expect from 'expect'
 import { Router } from '../src'
 
@@ -20,16 +20,17 @@ Bar.contextTypes = {
   route: React.PropTypes.object
 }
 
-const App = (props, { route }) => {
-  const Comp = route.component || 'div'
-  return (
-    <div>
-      <Comp />
-    </div>
-  )
+let ctx
+const App = (props, context) => {
+  ctx = context
+  const Comp = context.route.component || 'div'
+
+  return <Comp />
 }
 
 App.contextTypes = {
+  history: React.PropTypes.object,
+  location: React.PropTypes.object,
   route: React.PropTypes.object
 }
 
@@ -48,8 +49,72 @@ const routes = [
   }
 ]
 
+
 describe('<Router />', () => {
   describe('client-side rendering', () => {
+    if (typeof document === 'undefined') {
+      return
+    }
+    let root
+    let app
+
+    it('should not throw', () => {
+      expect(() => {
+        root = mount(<Router routes={routes}><App /></Router>)
+        app = root.find(App)
+      }).toNotThrow()
+    })
+
+    it('should pass context to child components', () => {
+      expect(ctx).toBeAn('object')
+    })
+
+    it('should pass history context', () => {
+      expect(ctx.history).toBeAn('object')
+      expect(ctx.history.push).toBeA('function')
+    })
+
+    it('should pass location context', () => {
+      expect(ctx.location).toBeAn('object')
+    })
+
+    it('should pass route context', () => {
+      expect(ctx.route).toBeAn('object')
+    })
+
+    it('should have route params', () => {
+      expect(ctx.route.params).toBeAn('object')
+    })
+
+    context('when changing routes', () => {
+      let prevCtx
+
+      before(() => {
+        prevCtx = ctx
+        ctx.history.push('/foo/32')
+      })
+
+      it('should change the route context', () => {
+        expect(prevCtx.route !== ctx.route).toBe(true)
+      })
+
+      it('should have a route param', () => {
+        expect(ctx.route.params.id).toEqual(32)
+      })
+    })
+  })
+
+  describe('getRoute()', () => {
+    const instance = new Router({ routes })
+    const route = instance.getRoute(routes, { pathname: '/foo/32' })
+
+    it('should return a matched route', () => {
+      expect(route).toBeAn('object')
+    })
+
+    it('should return params', () => {
+      expect(route.params.id).toEqual(32)
+    })
   })
 
   describe('server-side rendering', () => {
