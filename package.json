@@ -5,13 +5,20 @@
   "main": "index.js",
   "scripts": {
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
-    "build": "webpack -p --progress",
+    "build": "NODE_ENV=production webpack -p --progress",
     "start": "webpack-dev-server --hot --inline --progress --colors",
     "test": "mocha test --compilers js:babel-register"
   },
   "keywords": [],
   "author": "Brent Jackson",
   "license": "MIT",
+  "peerDependencies": {
+    "react": "^15.0.0"
+  },
+  "dependencies": {
+    "history": "^3.0.0",
+    "path-to-regexp": "^1.5.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-loader": "^6.2.4",
@@ -21,18 +28,12 @@
     "babel-register": "^6.9.0",
     "enzyme": "^2.3.0",
     "expect": "^1.20.1",
-    "history": "^3.0.0",
     "mocha": "^2.5.3",
-    "path-to-regexp": "^1.5.1",
-    "react": "^15.1.0",
-    "react-addons-test-utils": "^15.1.0",
-    "react-dom": "^15.1.0",
+    "react": "^15.2.1",
+    "react-addons-test-utils": "^15.2.1",
+    "react-dom": "^15.2.1",
     "react-router": "^2.4.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
-  },
-  "dependencies": {
-    "lodash": "^4.13.1",
-    "lodash.find": "^4.4.0"
   }
 }

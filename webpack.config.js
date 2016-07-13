@@ -1,4 +1,6 @@
 
+const webpack = require('webpack')
+
 const config = {
   entry: {
     bundle: './demo/entry.js',
@@ -19,6 +21,13 @@ const config = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ],
   devServer: {
     contentBase: 'demo',
     historyApiFallback: true

@@ -3,6 +3,75 @@
 
 Minimal React router based on React context
 
+```js
+// entry.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Router } from 'react-context-router'
+import App from './App'
+import Index from './Index'
+import Post from './Post'
+
+const routes = [
+  {
+    path: '/',
+    component: Index
+  },
+  {
+    path: '/posts/:id',
+    component: Post
+  }
+]
+
+const div = document.getElementById('app')
+
+ReactDOM.render(
+  <Router routes={routes}>
+    <App />
+  </Router>,
+  div
+)
+```
+
+```js
+// App.js
+import React from 'react'
+import { Link } from 'react-context-router'
+
+const Nav = () => (
+  <nav>
+    <Link href='/' children='Home' />
+    <Link href='/posts/1' children='First Post' />
+  </nav>
+)
+
+class App extends React.Component {
+  render () {
+    const { router } = this.context
+    const Comp = route.component || <div>Page Not Found</div>
+
+    return (
+      <div>
+        <Nav />
+        <Comp />
+      </div>
+    )
+  }
+}
+
+App.contextTypes = {
+  history: React.PropTypes.object,
+  location: React.PropTypes.object,
+  router: React.PropTypes.object
+}
+
+export default App
+```
+
+production bundles
+- baseline: 140 KB
+- context-router: 168 KB (186 KB w/ lodash.find)
+- react-router: 193 KB
 
 ---
 
@@ -12,6 +81,12 @@ Minimal React router based on React context
 
 - context-router: 241 KB (with native find)
 
+
+total 1344
+-rw-r--r--  1 jackson  staff  140787 Jul 13 13:07 base.js
+-rw-r--r--  1 jackson  staff  172210 Jul 13 13:07 bundle.js
+-rw-r--r--  1 jackson  staff  168819 Jul 13 13:07 mini.js
+-rw-r--r--  1 jackson  staff  193776 Jul 13 13:07 react-router.js
 
 
 total 1992

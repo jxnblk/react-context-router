@@ -1,6 +1,5 @@
 
 import React from 'react'
-import find from 'lodash.find'
 import { createHistory } from 'history'
 import pathToRegexp from 'path-to-regexp'
 
@@ -45,17 +44,20 @@ class Router extends React.Component {
     const { pathname } = location
     const keys = []
     const params = {}
-    const route = find(routes, ({ path }) => {
-      const reg = pathToRegexp(path, keys)
+
+    const route = routes.reduce((a, b) => {
+      const reg = pathToRegexp(b.path, keys)
       const match = reg.test(pathname)
       if (match) {
         const tokens = reg.exec(pathname)
         keys.forEach((key, i) => {
           params[key.name] = tokens[i + 1]
         })
+        return b
       }
-      return match
-    }) || {}
+      return a
+    }, null) || {}
+
     route.params = params
     return route
   }
