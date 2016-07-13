@@ -7,6 +7,7 @@
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
     "build": "NODE_ENV=production webpack -p --progress",
     "start": "webpack-dev-server --hot --inline --progress --colors",
+    "size": "bundle-size ./dist",
     "test": "mocha test --compilers js:babel-register"
   },
   "keywords": [],
@@ -26,6 +27,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
+    "bundle-size": "^0.6.2",
     "enzyme": "^2.3.0",
     "expect": "^1.20.1",
     "mocha": "^2.5.3",
