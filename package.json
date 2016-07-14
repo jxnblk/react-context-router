@@ -1,7 +1,7 @@
 {
   "name": "react-context-router",
   "version": "1.0.0",
-  "description": "",
+  "description": "Minimal React router based on React context",
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
@@ -12,7 +12,13 @@
     "mocha": "mocha test --compilers js:babel-register",
     "test": "karma start"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "react-component",
+    "routing",
+    "router",
+    "higher-order-component"
+  ],
   "author": "Brent Jackson",
   "license": "MIT",
   "peerDependencies": {
@@ -28,7 +34,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
-    "bundle-size": "^0.6.2",
+    "bundle-size": "^0.7.0",
     "enzyme": "^2.3.0",
     "expect": "^1.20.1",
     "json-loader": "^0.5.4",
