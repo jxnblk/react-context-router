@@ -135,7 +135,7 @@ Manually pass in a pathname to set the current path in server-side rendering.
 
 #### Child Context
 The Router component provides the following objects as context to its children:
-- `history` object from the [history](https://npmjs.com/package/history) package
+- `history` wrapped `window.history` object with `listen` and `push` methods
 - `route` object from the matching item in the `routes` prop. When a path contains parameters they will be passed as `route.params`.
 
 ### `<Link />` component
@@ -145,9 +145,9 @@ Used in place of `<a>` links to use client-side history navigation.
 ### Size comparison
 
 Gzip:
-- react-context-router: 24.92 kB (with history 29.19 KB)
-- react-router: 42.85 KB
-- Baseline react and react-dom: 82.22 KB
+- react-context-router: 18.95 KB (5.04 KB without React)
+- react-router: 40.29 KB
+- Baseline react 14.52 KB
 
 *Results from [bundle-size](https://npmjs.com/package/bundle-size)*
 

@@ -19,7 +19,6 @@
     "react": "^15.0.0"
   },
   "dependencies": {
-    "history": "^3.0.0",
     "path-to-regexp": "^1.5.1"
   },
   "devDependencies": {
