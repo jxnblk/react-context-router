@@ -9,8 +9,7 @@ npm i react-context-router
 
 [React Router](https://github.com/reactjs/react-router) is an excellent routing solution,
 but sometimes it does a lot more than you need it to.
-This is intended to be a smaller option with a simpler API,
-while still using some of the same core modules as React Router.
+This is intended to be a smaller option with a simpler API.
 
 ## Features
 - Small-ish package ~30KB
@@ -82,7 +81,6 @@ class App extends React.Component {
 
 App.contextTypes = {
   history: React.PropTypes.object,
-  location: React.PropTypes.object,
   router: React.PropTypes.object
 }
 
@@ -126,7 +124,7 @@ const html = ReactDOMServer.renderToString(
 
 ### `<Router />` component
 
-Higher order component that provides history, location, and route data through context.
+Higher order component that provides history, and route data through context.
 
 #### `routes` prop
 Array of route objects. Each route must include a `path`.
@@ -138,7 +136,6 @@ Manually pass in a pathname to set the current path in server-side rendering.
 #### Child Context
 The Router component provides the following objects as context to its children:
 - `history` object from the [history](https://npmjs.com/package/history) package
-- `location` object from the history package
 - `route` object from the matching item in the `routes` prop. When a path contains parameters they will be passed as `route.params`.
 
 ### `<Link />` component
@@ -148,8 +145,8 @@ Used in place of `<a>` links to use client-side history navigation.
 ### Size comparison
 
 Gzip:
+- react-context-router: 24.92 kB (with history 29.19 KB)
 - react-router: 42.85 KB
-- react-context-router: 29.19 KB
 - Baseline react and react-dom: 82.22 KB
 
 *Results from [bundle-size](https://npmjs.com/package/bundle-size)*

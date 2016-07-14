@@ -11,7 +11,7 @@ const NotFound = () => (
 
 class App extends React.Component {
   render () {
-    const { history, location, route } = this.context
+    const { history, route } = this.context
 
     const sx = {
       root: {
@@ -35,7 +35,6 @@ class App extends React.Component {
 
 App.contextTypes = {
   history: React.PropTypes.object,
-  location: React.PropTypes.object,
   route: React.PropTypes.object
 }
 

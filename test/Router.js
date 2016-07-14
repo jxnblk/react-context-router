@@ -30,7 +30,6 @@ const App = (props, context) => {
 
 App.contextTypes = {
   history: React.PropTypes.object,
-  location: React.PropTypes.object,
   route: React.PropTypes.object
 }
 
@@ -58,6 +57,10 @@ describe('<Router />', () => {
     let root
     let app
 
+    it('should mount', () => {
+      mount(<Router />)
+    })
+
     it('should not throw', () => {
       expect(() => {
         root = mount(<Router routes={routes}><App /></Router>)
@@ -72,10 +75,6 @@ describe('<Router />', () => {
     it('should pass history context', () => {
       expect(ctx.history).toBeAn('object')
       expect(ctx.history.push).toBeA('function')
-    })
-
-    it('should pass location context', () => {
-      expect(ctx.location).toBeAn('object')
     })
 
     it('should pass route context', () => {

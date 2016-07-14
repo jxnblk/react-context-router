@@ -1,6 +1,6 @@
 
 import React from 'react'
-import createHistory from 'history/lib/createBrowserHistory'
+import createHistory from './history'
 import pathToRegexp from 'path-to-regexp'
 
 class Router extends React.Component {
@@ -8,7 +8,6 @@ class Router extends React.Component {
     super()
     this.state = {
       history: {},
-      location: {},
       route: this.getRoute.bind(this)(routes, { pathname })
     }
     this.unlisten = () => {}
@@ -21,11 +20,9 @@ class Router extends React.Component {
 
   componentDidMount () {
     const history = createHistory()
-    const location = history.getCurrentLocation()
-    const route = this.getRoute(this.props.routes, location)
+    const route = this.getRoute(this.props.routes, window.location)
     this.setState({
       history,
-      location,
       route
     })
     this.unlisten = history.listen(this.handleHistoryChange.bind(this))
@@ -37,7 +34,7 @@ class Router extends React.Component {
 
   handleHistoryChange (location) {
     const route = this.getRoute(this.props.routes, location)
-    this.setState({ location, route })
+    this.setState({ route })
   }
 
   getRoute (routes, location) {
@@ -82,7 +79,6 @@ Router.defaultProps = {
 
 Router.childContextTypes = {
   history: React.PropTypes.object,
-  location: React.PropTypes.object,
   route: React.PropTypes.object
 }
 
