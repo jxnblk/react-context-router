@@ -9,8 +9,9 @@ const h = React.createElement
 const App = (props, context) => {
   return (
     h('div', {}, [
-      h('span', { key: 0 }, 'Current route:'),
-      h('pre', { key: 1 }, JSON.stringify(context.route, null, 2))
+      h(Link, { key: 0, href: '/' }, 'Home'),
+      h('span', { key: 1 }, 'Current route:'),
+      h('pre', { key: 2 }, JSON.stringify(context.route, null, 2))
     ])
   )
 }

@@ -12,7 +12,7 @@ but sometimes it does a lot more than you need it to.
 This is intended to be a smaller option with a simpler API.
 
 ## Features
-- Small-ish package ~30KB
+- Small-ish package ~5KB
 - Simple API
 - Only two components: Router & Link
 - Pass props directly to any component
@@ -146,7 +146,7 @@ Used in place of `<a>` links to use client-side history navigation.
 
 Gzip:
 - react-context-router: 18.95 KB (5.04 KB without React)
-- react-router: 40.29 KB
+- react-router: 40.29 KB with React
 - Baseline react 14.52 KB
 
 *Results from [bundle-size](https://npmjs.com/package/bundle-size)*
