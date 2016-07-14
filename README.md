@@ -7,7 +7,7 @@ Minimal React router based on React context
 npm i react-context-router
 ```
 
-React Router is an excellent routing solution,
+[React Router](https://github.com/reactjs/react-router) is an excellent routing solution,
 but sometimes it does a lot more than you need it to.
 This is intended to be a smaller option with a simpler API,
 while still using some of the same core modules as React Router.
@@ -139,7 +139,7 @@ Manually pass in a pathname to set the current path in server-side rendering.
 The Router component provides the following objects as context to its children:
 - `history` object from the [history](https://npmjs.com/package/history) package
 - `location` object from the history package
-- `route` object from the matching item in the `routes` prop. When a path contains parameters they will be passes as `route.params`.
+- `route` object from the matching item in the `routes` prop. When a path contains parameters they will be passed as `route.params`.
 
 ### `<Link />` component
 Used in place of `<a>` links to use client-side history navigation.
