@@ -16,7 +16,7 @@ This is intended to be a smaller option with a simpler API.
 ## Features
 - Small-ish package ~5KB
 - Simple API
-- One higher order componand and two components: Router & Link
+- One higher order component and two components: Router & Link
 - Pass props directly to any component
 - Pass anything through route context
 
