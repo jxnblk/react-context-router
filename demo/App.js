@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { Link } from '../src'
+import { createRouter, Link } from '../src'
 
 const NotFound = () => (
   <div>
@@ -11,7 +11,7 @@ const NotFound = () => (
 
 class App extends React.Component {
   render () {
-    const { history, route } = this.context
+    const { history, route } = this.props
 
     const sx = {
       root: {
@@ -38,5 +38,5 @@ App.contextTypes = {
   route: React.PropTypes.object
 }
 
-export default App
+export default createRouter(App)
 
