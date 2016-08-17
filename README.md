@@ -3,6 +3,8 @@
 
 Minimal React router based on React context
 
+[![Build Status](https://travis-ci.org/jxnblk/react-context-router.svg?branch=master)](https://travis-ci.org/jxnblk/react-context-router)
+
 ```sh
 npm i react-context-router
 ```
