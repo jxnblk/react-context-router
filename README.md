@@ -25,6 +25,8 @@ This is intended to be a smaller option with a simpler API.
 import React from 'react'
 import { createRouter, Link } from 'react-context-router'
 
+const NotFound = () => <div>Not Found</div>
+
 const Nav = () => (
   <nav>
     <Link href='/' children='Home' />
@@ -35,7 +37,7 @@ const Nav = () => (
 class App extends React.Component {
   render () {
     const { route } = this.props
-    const Comp = route.component || <div>Page Not Found</div>
+    const Comp = route.component || NotFound
 
     return (
       <div>
@@ -143,3 +145,4 @@ Gzip:
 *Results from [bundle-size](https://npmjs.com/package/bundle-size)*
 
 MIT License
+
