@@ -1,16 +1,4 @@
 
-/*
- * Alt HOC API
- *
- * export default createRouter(routes)(App)
- *
- * *OR*
- *
- * export default createRouter(App)
- *
- * render(<App routes={routes} />, div)
- */
-
 import React from 'react'
 import pathToRegexp from 'path-to-regexp'
 import createHistory from './create-history'
