@@ -58,6 +58,8 @@ ReactDOM.render(
 import React from 'react'
 import { Link } from 'react-context-router'
 
+const NotFound = () => <div>Not Found</div>
+
 const Nav = () => (
   <nav>
     <Link href='/' children='Home' />
@@ -67,8 +69,8 @@ const Nav = () => (
 
 class App extends React.Component {
   render () {
-    const { router } = this.context
-    const Comp = route.component || <div>Page Not Found</div>
+    const { route } = this.context
+    const Comp = route.component || NotFound
 
     return (
       <div>
@@ -81,7 +83,7 @@ class App extends React.Component {
 
 App.contextTypes = {
   history: React.PropTypes.object,
-  router: React.PropTypes.object
+  route: React.PropTypes.object
 }
 
 export default App
