@@ -1,7 +1,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router } from '../src'
+import { createRouter, Router } from '../src'
 import App from './App'
 import Index from './Index'
 import About from './About'
@@ -24,10 +24,5 @@ const routes = [
   }
 ]
 
-ReactDOM.render(
-  <Router routes={routes}>
-    <App />
-  </Router>,
-  div
-)
+ReactDOM.render(<App routes={routes} />, div)
 
